@@ -11,10 +11,6 @@ interface VideosApi {
         apikey,
         apiHost
     )
-//    @GET("search/top?query=top&sort=1")
-//    suspend fun fetchVideos(@Query("offset") query: Int): VideoResult
-
-    //jobs@sentia.com.au
 
     @GET("trending")
     suspend fun fetchVideos(@Query("page") query: Int): FeedResult
