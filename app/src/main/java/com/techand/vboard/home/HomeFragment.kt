@@ -23,25 +23,17 @@ class HomeFragment : Fragment() {
     @Inject
     lateinit var viewModelFactory: HomeViewModelFactory
     private val videoAdapter = HomeAdapter()
+    private val viewModel: HomeViewModel by lazy {
+        ViewModelProvider(this, viewModelFactory)[HomeViewModel::class.java]
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-
-        val view = inflater.inflate(R.layout.home_fragment, container, false)
-        val viewModel: HomeViewModel by lazy {
-            ViewModelProvider(this, viewModelFactory)[HomeViewModel::class.java]
-        }
-
+        val view = inflater.inflate(R.layout.fragment_home, container, false)
         setRv(view)
-
-        lifecycleScope.launch {
-            viewModel.fetchPosts().collectLatest { pagingData ->
-                videoAdapter.submitData(pagingData)
-            }
-        }
-
+        showData()
         return view
     }
 
@@ -50,6 +42,14 @@ class HomeFragment : Fragment() {
         rv.apply {
             layoutManager = LinearLayoutManager(rv.context)
             adapter = videoAdapter
+        }
+    }
+
+    private fun showData() {
+        lifecycleScope.launch {
+            viewModel.fetchPosts().collectLatest { pagingData ->
+                videoAdapter.submitData(pagingData)
+            }
         }
     }
 }

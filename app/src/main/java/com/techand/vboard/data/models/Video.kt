@@ -26,6 +26,6 @@ data class Video(
             Locale.getDefault(),
             CompactDecimalFormat.CompactStyle.SHORT
         ).format(b)
-        return " . $formattedNumber . "
+        return "  $formattedNumber views  "
     }
 }

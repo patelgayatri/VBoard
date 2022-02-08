@@ -23,7 +23,7 @@
             <ImageView
                 android:id="@+id/item_image"
                 android:layout_width="match_parent"
-                android:layout_height="240dp"
+                android:layout_height="230dp"
                 android:scaleType="fitXY"
                 app:image="@{Contents.video.thumbnails.get(2).url}"
                 tools:srcCompat="@tools:sample/avatars" />
@@ -36,12 +36,8 @@
 
                 <TextView
                     android:id="@+id/item_title"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="monospace"
-                    android:text="@{Contents.video.title}"
-                    android:textStyle="bold"
-                    app:layout_constraintTop_toTopOf="@+id/item_image" />
+                    style="@style/titleText"
+                    android:text="@{Contents.video.title}" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -49,24 +45,18 @@
 
                     <TextView
                         android:id="@+id/item_channel"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@{Contents.video.channelName}"
-                        app:layout_constraintTop_toTopOf="@+id/item_image" />
+                        style="@style/bodyText"
+                        android:text="@{Contents.video.channelName}" />
 
                     <TextView
                         android:id="@+id/item_views"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@{Contents.video.getView}"
-                        app:layout_constraintTop_toTopOf="@+id/item_image" />
+                        style="@style/bodyText"
+                        android:text="@{Contents.video.getView}" />
 
                     <TextView
                         android:id="@+id/item_time"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@{Contents.video.publishedTimeText}"
-                        app:layout_constraintTop_toTopOf="@+id/item_image" />
+                        style="@style/bodyText"
+                        android:text="@{Contents.video.publishedTimeText}" />
                 </LinearLayout>
             </LinearLayout>
 
