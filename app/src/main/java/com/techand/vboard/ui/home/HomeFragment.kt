@@ -10,6 +10,9 @@ import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.techand.vboard.R
+import com.techand.vboard.ui.home.HomeAdapter
+import com.techand.vboard.ui.home.HomeViewModel
+import com.techand.vboard.ui.home.HomeViewModelFactory
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
@@ -18,7 +21,6 @@ import javax.inject.Inject
 
 @AndroidEntryPoint
 class HomeFragment : Fragment() {
-
 
     @Inject
     lateinit var viewModelFactory: HomeViewModelFactory
@@ -37,6 +39,7 @@ class HomeFragment : Fragment() {
         return view
     }
 
+
     private fun setRv(view: View) {
         val rv = view.findViewById<View>(R.id.home_recycler) as RecyclerView
         rv.apply {
@@ -47,7 +50,7 @@ class HomeFragment : Fragment() {
 
     private fun showData() {
         lifecycleScope.launch {
-            viewModel.fetchPosts().collectLatest { pagingData ->
+            viewModel.getTrendingVideos().collectLatest { pagingData ->
                 videoAdapter.submitData(pagingData)
             }
         }

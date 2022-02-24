@@ -1,18 +1,19 @@
-package com.techand.vboard.home
+package com.techand.vboard.ui.home
 
-import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.navigation.findNavController
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.techand.vboard.data.models.Content
 import com.techand.vboard.databinding.ItemHomeBinding
-import com.techand.vboard.videoplay.VideoPlayActivity
+import com.techand.vboard.home.HomeFragmentDirections
 import javax.inject.Inject
 
 class HomeAdapter @Inject constructor() :
     PagingDataAdapter<Content, HomeAdapter.ContentViewHolder>(VideoComparator) {
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
         ContentViewHolder(
             ItemHomeBinding.inflate(
@@ -24,9 +25,10 @@ class HomeAdapter @Inject constructor() :
         getItem(position)?.let {
             holder.bind(it)
             holder.itemView.setOnClickListener { listItem ->
-                val intent = Intent(listItem.context, VideoPlayActivity::class.java)
-                intent.putExtra("videoID",it.video.videoId)
-                listItem.context.startActivity(intent)
+                val direction = HomeFragmentDirections
+                    .actionHomeFragmentToHiltVideoPlayActivity(it.video.videoId)
+                listItem.findNavController().navigate(direction)
+
             }
         }
     }

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/video_nav_graph"
+    app:startDestination="@id/relatedFragment">
+    <fragment
+        android:id="@+id/relatedFragment"
+        android:name="com.techand.vboard.ui.videoplay.RelatedFragment"
+        android:label="RelatedFragment" >
+
+        <action
+            android:id="@+id/action_relatedFragment_to_VideoPlayActivity"
+            app:destination="@id/videoPlayActivity" />
+    </fragment>
+    <activity
+        android:id="@+id/videoPlayActivity"
+        android:name="com.techand.vboard.ui.videoplay.VideoPlayActivity"
+        android:label="VideoPlayActivity" >
+        <argument
+            android:name="video"
+            app:argType="string" />
+    </activity>
+</navigation>

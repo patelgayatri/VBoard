@@ -1,7 +1,8 @@
-package com.techand.vboard
+package com.techand.vboard.ui
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import com.techand.vboard.R
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

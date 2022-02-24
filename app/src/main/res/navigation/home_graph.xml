@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/homeFragment">
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.techand.vboard.home.HomeFragment"
+        android:label="home_fragment"
+        tools:layout="@layout/fragment_home" >
+
+        <action
+            android:id="@+id/action_homeFragment_to_hilt_VideoPlayActivity"
+            app:destination="@id/videoPlayActivity" />
+    </fragment>
+    <activity
+        android:id="@+id/splashActivity"
+        android:name="com.techand.vboard.ui.SplashActivity"
+        android:label="activity_splash"
+        tools:layout="@layout/activity_splash" />
+    <activity
+        android:id="@+id/videoPlayActivity"
+        android:name="com.techand.vboard.ui.videoplay.VideoPlayActivity"
+        android:label="VideoPlayActivity" >
+        <argument
+            android:name="video"
+            app:argType="string" />
+    </activity>
+</navigation>
